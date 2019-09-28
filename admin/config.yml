@@ -1,0 +1,26 @@
+backend:
+  name: github
+  repo: crackofdusk/eleventy-sample
+
+publish_mode: editorial_workflow
+
+media_folder: static
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      - label: Home page
+        name: index
+        file: index.md
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Content", name: "body", widet: "markdown" }
+      - label: About page
+        name: about
+        file: about.md
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Content", name: "body", widet: "markdown" }

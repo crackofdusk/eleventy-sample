@@ -1,6 +1,5 @@
 ---
 title: About
-tag: page
 layout: page
 ---
 
