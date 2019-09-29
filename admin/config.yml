@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: crackofdusk/eleventy-sample
+  base_url: https://eleventy-sample.now.sh/api/
 
 publish_mode: editorial_workflow
 
