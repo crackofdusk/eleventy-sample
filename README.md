@@ -39,8 +39,13 @@ The functions are in the `api/` directory and rely on the following environment 
 - `GITHUB_CLIENT_ID`
 - `GITHUB_CLIENT_SECRET`
 - `JWT_SECRET`
+- `ORIGIN`
 
-The Github credentials are from the [Github OAuth app](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/). `JWT_SECRET` is for signing and verifying JSON web tokens used for cross-site request forgery protection in the OAuth flow. You can generate it with for example with `openssl rand -base64 32`.
+The Github credentials are from the [Github OAuth app](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/).
+
+ `JWT_SECRET` is for signing and verifying JSON web tokens used for cross-site request forgery protection in the OAuth flow. You can generate it with for example with `openssl rand -base64 32`.
+
+The origin corresponds to the deployment URL (protocol and domain). Here it's `https://eleventy-sample.now.sh` in production and `http://localhost:3000` in development.
 
 The secrets can be stored in `.env` (don't commit it!) for local development with `now dev`. The production secrets are stored as [Now secrets](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/).
 
