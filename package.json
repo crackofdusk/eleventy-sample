@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy --output public",
+    "build": "npx @11ty/eleventy",
     "test": "ava"
   },
   "keywords": [],
