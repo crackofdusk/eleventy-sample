@@ -1,7 +1,4 @@
 ---
-title: About
-tag: page
-layout: page
+title: About this demo
 ---
 
-This is the "About" page.
