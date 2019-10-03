@@ -1,7 +1,4 @@
 ---
 title: About
-tag: page
-layout: page
 ---
-
-This is the "About" page.
+This is the "About" page. There should be a rich text editor for this section, but it does not work?
