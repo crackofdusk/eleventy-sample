@@ -1,6 +1,5 @@
 ---
-title: Eleventy Sample
 layout: page
+title: Eleventy Sample
 ---
-
-Hello!
+Hello! Does editing preserve the front matter?
