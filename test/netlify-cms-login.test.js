@@ -1,18 +1,30 @@
 import test from 'ava';
-import render from '../lib/netlify-cms-login';
+import { renderSuccess, renderError } from '../lib/netlify-cms-login';
 
 test('returns an error when the origin is missing', t => {
-  t.true(render(undefined, 'ok', '').includes('Origin missing'));
-  t.true(render(null, 'ok', '').includes('Origin missing'));
-  t.true(render('', 'ok', '').includes('Origin missing'));
+  t.true(renderSuccess(undefined, '').includes('Origin missing'));
+  t.true(renderError(undefined, '').includes('Origin missing'));
+  t.true(renderSuccess(null, '').includes('Origin missing'));
+  t.true(renderError(null, '').includes('Origin missing'));
+  t.true(renderSuccess('', '').includes('Origin missing'));
+  t.true(renderError('', '').includes('Origin missing'));
 });
 
-test('contains the authorization message', t => {
+test('renderSuccess result contains the authorization message', t => {
   const origin = 'http://localhost';
-  const status = 'success';
-  const content = { provider: 'github', token: 'access_token' };
+  const token = 'access_token';
 
-  const expected = 'authorization:github:success:{"provider":"github","token":"access_token"}';
+  const expected = 'authorization:github:success:{"token":"access_token"}';
 
-  t.true(render(origin, status, content).includes(expected));
+  t.true(renderSuccess(origin, token).includes(expected));
 });
+
+test('renderError result contains the error message', t => {
+  const origin = 'http://localhost';
+  const message = 'failed';
+
+  const expected = 'authorization:github:error:{"message":"failed"}';
+
+  t.true(renderError(origin, message).includes(expected));
+});
+

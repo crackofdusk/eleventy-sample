@@ -2,7 +2,7 @@ const url = require('url');
 const { URLSearchParams } = url;
 const { verify } = require('jsonwebtoken');
 const requestToken = require('../lib/request-token');
-const renderTokenResponse = require('../lib/netlify-cms-login');
+const { renderSuccess, renderError } = require('../lib/netlify-cms-login');
 
 module.exports = async (req, res) => {
   const queryParams = new URLSearchParams(url.parse(req.url).query);
@@ -12,26 +12,14 @@ module.exports = async (req, res) => {
 
   if (!code) {
     res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(
-      renderTokenResponse(
-        origin,
-        'error',
-        { message: 'Code parameter missing' }
-      )
-    );
+    res.end(renderError(origin, 'Code parameter missing'));
     return;
   }
 
   verify(state, process.env.JWT_SECRET, (error, _) => {
     if (error) {
       res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end(
-        renderTokenResponse(
-          origin,
-          'error',
-          {message: 'Invalid state parameter'}
-        )
-      );
+      res.end(renderError(origin, 'Invalid state parameter'));
       return;
     }
   });
@@ -41,10 +29,10 @@ module.exports = async (req, res) => {
 
   if (error) {
     res.writeHead(400, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(renderTokenResponse(origin, 'error', tokenResponse));
+    res.end(renderError(origin, error));
     return;
   }
 
   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-  res.end(renderTokenResponse(origin, 'success', {provider: 'github', token: access_token }));
+  res.end(renderSuccess(origin, access_token));
 };
