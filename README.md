@@ -32,7 +32,7 @@ The admin interface is powered by [Netlify CMS](https://www.netlifycms.org).
 
 Netlify CMS supports [authentication with Github](https://www.netlifycms.org/docs/authentication-backends/#github-backend). It uses Netlify Identity by default, which expects the repository to be connected to Netlify. Since we are not using Netlify, we need to provide our own authentication backend.
 
-As we are deploying to ZEIT Now, we can use its ["serverless functions"](https://zeit.co/docs/v2/serverless-functions/introduction/) for this purpose. The implementation is inspired by the [existing OAuth clients for NetlifyCMS](https://www.netlifycms.org/docs/authentication-backends/#external-oauth-clients).
+As we are deploying to ZEIT Now, we can use its ["serverless functions"](https://zeit.co/docs/v2/serverless-functions/introduction/) for this purpose. The implementation is inspired by the [existing OAuth clients for NetlifyCMS](https://www.netlifycms.org/docs/authentication-backends/#external-oauth-clients) and is explained in this blog post: [Github OAuth authorization with serverless functions](https://dimiterpetrov.com/blog/github-oauth-authorization-with-serverless-functions/).
 
 The functions are in the `api/` directory and rely on the following environment variables:
 
