@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.7.1",
+    "esm": "^3.2.25",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
     "uuid": "^3.3.3"
@@ -21,5 +22,10 @@
     "ava": "^3.13.0",
     "nock": "^11.3.5",
     "test-listen": "^1.1.0"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
   }
 }
